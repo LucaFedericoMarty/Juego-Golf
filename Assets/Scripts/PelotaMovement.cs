@@ -16,21 +16,17 @@ public class PelotaMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.eulerAngles += new Vector3(0, 2.5f, 0);
-
-            if (Input.GetKeyUp(KeyCode.Mouse1))
-            {
-                transform.Translate(0.5f, 0, 0);
-            }
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             transform.eulerAngles -= new Vector3(0, 2.5f, 0);
 
-            if (Input.GetKeyUp(KeyCode.Mouse1))
-            {
-                transform.Translate(0.5f, 0, 0);
-            }
+        }
+
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            transform.Translate(0.1f, 0, 0);
         }
     }
 }

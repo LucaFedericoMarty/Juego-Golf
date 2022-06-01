@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PelotaMovement : MonoBehaviour
 {
+    bool ganaste;
+    int cantidadDeTiros;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        ganaste = true;
     }
 
     // Update is called once per frame
@@ -24,9 +27,30 @@ public class PelotaMovement : MonoBehaviour
 
         }
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Space))
         {
             transform.Translate(0.1f, 0, 0);
         }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+
+        }
+
+        if (transform.position.y < 0 && cantidadDeTiros <= 10)
+        {
+            ganaste = true;
+        }
+
+        else if (cantidadDeTiros > 10)
+        {
+            ganaste = false;
+        }
+
+        if (ganaste)
+        {
+
+        }
+        
     }
 }

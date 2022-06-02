@@ -29,22 +29,6 @@ public class PelotaMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    transform.eulerAngles += new Vector3(0, 2.5f, 0);
-        //}
-
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    transform.eulerAngles -= new Vector3(0, 2.5f, 0);
-
-        //}
-
-        //if (Input.GetKey(KeyCode.Space))
-        //{
-        //    transform.Translate(0.1f, 0, 0);
-        //}
-
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {           
             isPressing = true;
@@ -54,7 +38,7 @@ public class PelotaMovement : MonoBehaviour
         {
             timeElapsed += Time.deltaTime;
             rotation = horizonatlSpeed * Input.GetAxis("Mouse X");
-            translation = Input.GetAxis("Mouse Y")   * timeElapsed;
+            translation = Input.GetAxis("Mouse Y") * timeElapsed;
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -62,9 +46,9 @@ public class PelotaMovement : MonoBehaviour
             isPressing = false;
             rotation *= Time.deltaTime;
             translation *= Time.deltaTime;
-            transform.Rotate(0, rotation, 0);
-            transform.Translate(translation, 0, 0);
-            rb.AddForce(transform.forward * translation,ForceMode.Impulse);
+            //transform.eulerAngles += new Vector3(0, 0, rotation);
+            //transform.Translate(translation, 0, 0);
+            rb.AddForce(transform.eulerAngles += new Vector3(0,0, rotation) * translation,ForceMode.Impulse);
         }
         
 

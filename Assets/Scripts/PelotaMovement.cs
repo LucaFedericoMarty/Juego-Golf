@@ -14,12 +14,14 @@ public class PelotaMovement : MonoBehaviour
     // Variable Float
     float timeElapsed;
     float horizonatlSpeed = 2.0f;
-    float rotation;
-    float translation;
+    public  float rotation;
+    public float translation;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         isPressing = false;
         ganaste = true;
     }
@@ -43,24 +45,28 @@ public class PelotaMovement : MonoBehaviour
         //    transform.Translate(0.1f, 0, 0);
         //}
 
-        if (isPressing == false)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                timeElapsed += Time.deltaTime;
-                rotation = horizonatlSpeed * Input.GetAxis("Mouse Y");
-                translation = Input.GetAxis("Mouse X") * timeElapsed;
-                isPressing = true;
-            }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {           
+            isPressing = true;
         }
 
-        if (isPressing)
+        if (isPressing == true)
         {
+            timeElapsed += Time.deltaTime;
+            rotation = horizonatlSpeed * Input.GetAxis("Mouse X");
+            translation = Input.GetAxis("Mouse Y")   * timeElapsed;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            isPressing = false;
             rotation *= Time.deltaTime;
             translation *= Time.deltaTime;
             transform.Rotate(0, rotation, 0);
             transform.Translate(translation, 0, 0);
+            rb.AddForce(transform.forward * translation,ForceMode.Impulse);
         }
+        
 
         if (transform.position.y < 0 && cantidadDeTiros <= 10)
         {

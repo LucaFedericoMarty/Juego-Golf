@@ -56,14 +56,14 @@ public class PelotaMovement : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            isPressing = false;
             rotation *= Time.deltaTime;
             translation *= Time.deltaTime;
             //transform.eulerAngles += new Vector3(0, 0, rotation);
             //transform.Translate(translation, 0, 0);
             rb.AddForce(transform.eulerAngles += new Vector3(0,0, rotation) * translation,ForceMode.Impulse);
+            isPressing = false;
         }
-        
+
 
         if (transform.position.y < 0 && cantidadDeTiros <= 10)
         {

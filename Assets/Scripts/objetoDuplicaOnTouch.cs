@@ -29,7 +29,7 @@ public class objetoDuplicaOnTouch : MonoBehaviour
             if (counter < 3)
             {
                 clon = Instantiate(obstaculoMultiplicador);
-                clon.transform.Translate(0, 0, separacion);
+                clon.transform.Translate(clon.transform.position.x, 0.356f, separacion);
                 counter++;
                 separacion = separacion + 0.5f;
             }
